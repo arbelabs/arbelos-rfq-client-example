@@ -1,6 +1,7 @@
 import json
-import time
+import os
 import requests
+import time
 from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
@@ -72,8 +73,8 @@ class ArbelosRFQApiClient:
         return self._make_request("/balances", params)
 
 # Example usage:
-public_key_hex = 'your_public_key'
-private_key_hex = 'your_private_key'
+public_key_hex = os.getenv('ARBELOS_RFQ_API_PUBLIC_KEY')
+private_key_hex = os.getenv('ARBELOS_RFQ_API_PRIVATE_KEY')
 base_url = "https://dev-api.arbeloslabs.xyz/rfq/v1"
 client = ArbelosRFQApiClient(public_key_hex, private_key_hex, base_url)
 
